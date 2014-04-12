@@ -15,7 +15,7 @@ public class InfixBuilder extends JFrame {
         JFrame frame;
         setVisible(true);
         setTitle("Infix Expression Converter and Evaluator");
-        setSize(315, 320);
+        setSize(310, 350);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
     }
@@ -26,17 +26,14 @@ public class InfixBuilder extends JFrame {
      * Build and runs the GUI
     */
      
-        // Initialize Panel
+        // Initialize button panel
         JPanel jp = new JPanel(new BorderLayout());
-        getContentPane().add(jp);
-        jp.setLayout(null);
         
-        // Initialize Text Field
+        // Initialize text Field
         final JTextField jtf = new JTextField("", 12);
-        //jtf.setBackground( Color.white );
-        //jtf.setHorizontalAlignment(JTextField.RIGHT);
-        //jtf.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        jp.add(jtf);
+        jtf.setBackground(Color.white);
+        jtf.setHorizontalAlignment(JTextField.RIGHT);
+        jtf.setFont(new Font("Tahoma", Font.PLAIN, 24));
         
         // Build number buttons
         addButton("1", 50, 50, 10, 10, jp, jtf);
@@ -71,6 +68,16 @@ public class InfixBuilder extends JFrame {
         // Build Quit button
         addButton("Quit", 100, 25, 210, 250, jp, jtf);
         
+        addButton("Null", 100, 25, 10, 10, jp, jtf);
+        
+        // Build final panel
+        JPanel finalPanel = new JPanel();
+        finalPanel.setLayout(new BorderLayout());
+        finalPanel.add(jp, BorderLayout.CENTER);
+        finalPanel.add(jtf, BorderLayout.SOUTH);
+        setContentPane(finalPanel);
+        setResizable(false);
+        
         System.out.println("Please enter an infix expression. Press 'Enter' when finished.");
     }    
     
@@ -80,10 +87,10 @@ public class InfixBuilder extends JFrame {
      * Adds a button to the panel
     */
     
-        JButton numberButton = new JButton(label);
-        numberButton.setBounds(placeX, placeY, sizeX, sizeY); 
-        addListener(jtf, numberButton, label);
-        panel.add(numberButton);  
+        JButton button = new JButton(label);
+        button.setBounds(placeX, placeY, sizeX, sizeY); 
+        addListener(jtf, button, label);
+        panel.add(button);  
     }
     
     
