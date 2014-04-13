@@ -9,81 +9,46 @@ Algorithm:
 Purpose:
 */
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 class Driver {
 
   
     public static void main(String args[]) {
-    /*
-     * The main method.
-    */
+        /*
+         * The main method.
+        */
         
-        ArrayList<Integer> sequence = new ArrayList<Integer>();
-        Tree tree = new Tree();
-        TreeNode t = new TreeNode();
-        
-        try {
-          
-            listCommands();
-            
-            // Read in command from user
-            BufferedReader inputData = new BufferedReader(new InputStreamReader(System.in));
-            String line = inputData.readLine().toLowerCase();
-            CommandParser cp = new CommandParser();
-        
-            while (!line.equals("done")) {
-          
-                switch (line) {
-              
-                    case "enter":
-                        sequence = cp.parseEnter();
-                        t = tree.build(t, sequence);
-                        break;
-                    case "inorder":
-                        tree.inorder(t);
-                        break;
-                    case "postorder":
-                        tree.postorder(t);
-                        break;
-                    case "count":
-                        cp.parseCount();
-                        break;
-                    case "swap":
-                        cp.parseSwap();
-                        break;
-                    case "compare":
-                        cp.parseCompare();
-                        break;
-                    default:
-                        System.out.println("Invalid command. Please try again.");
-                        break;
-                }
-                  
-                System.out.println("Enter another command:");
-                line = inputData.readLine().toLowerCase();
-                }
-                
-        } catch(Exception e) {
-            System.out.println("Error " + e.toString());
-        }   
-    } 
+        int[] sequence1 = new int[] {60, 20, 100, 35, 15, 200, 75, 150, 6, 17, 40};
+        int[] sequence2 = new int[] {60, 100, 20, 15, 35, 75, 200, 6, 17, 40, 150};
     
-    public static void listCommands() {
-    /*
-     * Lists commands for user
-    */
+        Tree t1 = new Tree(sequence1);
+
+        printInorder(t1);
+        printPostorder(t1);
+    }
+    
+    
+    public static void printInorder(Tree t) {
+        /*
+         * Prints the sequence using inorder method
+        */
+
+        System.out.println("Inorder:");
+        System.out.print("\t");
+        t.inorder(t.root);
+        System.out.println("");
+    }
+    
+       
+    public static void printPostorder(Tree t) {
+        /*
+         * Prints the sequence using postorder method
+        */
       
-        System.out.println("Please enter a command.  Valid commands are:");
-        System.out.println("\tEnter:");
-        System.out.println("\tinorder:");
-        System.out.println("\tpostorder:");
-        System.out.println("\tcount:");
-        System.out.println("\tswap:");
-        System.out.println("\tcompare:");
-        System.out.println("\tdone:");
+        System.out.println("Postorder:");
+        System.out.print("\t");
+        t.postorder(t.root);
+        System.out.println("");
     }
 }

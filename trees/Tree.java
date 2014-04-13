@@ -2,30 +2,28 @@ import java.util.ArrayList;
 
 public class Tree {
   
-    private TreeNode root;
-  
-    public void tree(TreeNode treeNode) {
+    public TreeNode root = null;
+    
+    
+    public Tree(int[] sequence) {
         /*
-         * Constructor method
+         * The constructor method
         */
-      
-        root = treeNode;
+        
+        build(sequence);
     }
-  
-  
-    public TreeNode build(TreeNode t, ArrayList<Integer> sequence) {
+    
+    public void build(int[] sequence) {
         /*
          * Builds a Binary Search Tree from given sequence of integers
         */
     
-        for (int i=0; i<sequence.size(); i++) {
-            int number = sequence.get(i);
+        for (int i=0; i<sequence.length; i++) {
+            int number = sequence[i];
             TreeNode newNode = new TreeNode(number);
             if (root == null) {root = newNode;}
             insert(root, newNode);
         }
-        
-        return root;
     }
     
    
@@ -78,13 +76,13 @@ public class Tree {
         return t;
       
     }
-   
+    
     
     public void inorder(TreeNode t) {
 
         if (t != null) {
             inorder(t.left);
-            System.out.println(" " + t.data);
+            System.out.print(t.data + " ");
             inorder(t.right);
         }
     }
@@ -95,7 +93,7 @@ public class Tree {
         if (t != null) {
             postorder(t.left);
             postorder(t.right);
-            System.out.println(" " + t.data);
+            System.out.print(t.data + " ");
         }
     }
     
