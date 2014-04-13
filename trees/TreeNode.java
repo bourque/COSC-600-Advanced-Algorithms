@@ -2,7 +2,7 @@ public class TreeNode {
 
     Object data;
     TreeNode left;
-    Treenode right;
+    TreeNode right;
     
     public TreeNode() {
       
@@ -12,7 +12,7 @@ public class TreeNode {
     }
     
     
-    public Node(Object x) {
+    public TreeNode(Object x) {
       
         data = x;
         left = null;
