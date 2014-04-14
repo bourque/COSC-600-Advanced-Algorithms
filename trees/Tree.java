@@ -43,6 +43,25 @@ public class Tree {
         }
     }
     
+    /*
+    public void inorder(TreeNode t, int count, int element) {
+        System.out.println(count);
+        System.out.println(element);
+        System.out.println(t);
+        System.out.println(t.data);
+        if (t != null) {
+            inorder(t.left);
+            count++;
+            System.out.println("here");
+            System.out.println(count);
+            System.out.println(element);
+            if (count == element) {
+                System.out.println("reached");
+                System.out.print(t.data + " ");
+            }
+            inorder(t.right);
+        }
+    }*/
     
     public void postorder(TreeNode t) {
       
