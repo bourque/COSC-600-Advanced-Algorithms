@@ -48,7 +48,6 @@ class Driver {
         // Initialize variables
         int[] sequence1 = new int[] {60, 20, 100, 35, 15, 200, 75, 150, 6, 17, 40};
         int[] sequence2 = new int[] {60, 100, 20, 15, 35, 75, 200, 6, 17, 40, 150};
-        int count = 0;
     
         // Build T1
         Tree t1 = new Tree();
@@ -114,8 +113,8 @@ class Driver {
         System.out.println("\n");
         
         // Traverse T3 using inorder to find 5th node
-        System.out.print("Traversing tree T3 via inorder procedure: ");
-        printInorder(t3);
+        System.out.print("Finding node 5 from T3: ");
+        t3.find(t3.root, 5);
     }
     
     
@@ -161,6 +160,16 @@ class Driver {
         
         return true;
     }
+    
+    
+    public static void search(Tree t, int n) {
+        /*
+         * Searches the binary search tree and prints out
+         * the value of the nth node
+        */
+      
+        t.find(t.root, n);
+    }
         
        
     public static TreeNode delete(TreeNode t, int value) {
@@ -199,8 +208,8 @@ class Driver {
 
         t.inorder(t.root);
     }
-    
-       
+        
+        
     public static void printPostorder(Tree t) {
         /*
          * Prints the sequence using postorder procedure

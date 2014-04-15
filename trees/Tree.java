@@ -1,7 +1,7 @@
 public class Tree {
   
     public TreeNode root = null;
-    public int counter = 0;
+    public int count = 0;
     
    
     public void insert(TreeNode t, TreeNode nodeToAdd) {
@@ -17,22 +17,16 @@ public class Tree {
     }
    
   
-    public TreeNode find(TreeNode t, int k) {
+    public void find(TreeNode t, int n) {
     
-        while (t.data != k) {
-            if (k < (int) t.data) {
-                t = t.left;
-            } else {
-                t = t.right;
-            }
-            
-            if (t == null) {return null;}
+        if (t != null) {
+            find(t.left, n);
+            count++;
+            if (count == n) {System.out.println(t.data);}
+            find(t.right, n);
         }
-        
-        return t;
-      
     }
-    
+
     
     public void inorder(TreeNode t) {
 
@@ -42,26 +36,7 @@ public class Tree {
             inorder(t.right);
         }
     }
-    
-    /*
-    public void inorder(TreeNode t, int count, int element) {
-        System.out.println(count);
-        System.out.println(element);
-        System.out.println(t);
-        System.out.println(t.data);
-        if (t != null) {
-            inorder(t.left);
-            count++;
-            System.out.println("here");
-            System.out.println(count);
-            System.out.println(element);
-            if (count == element) {
-                System.out.println("reached");
-                System.out.print(t.data + " ");
-            }
-            inorder(t.right);
-        }
-    }*/
+
     
     public void postorder(TreeNode t) {
       
