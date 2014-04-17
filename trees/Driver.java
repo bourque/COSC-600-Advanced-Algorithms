@@ -4,10 +4,11 @@ Matthew Bourque
 Project 5
 
 Algorithm:
-    Define two sequences to be used to create binary search tree(s)
+    Prompt user to input a sequence of integers
     Build T1 (first binary search tree) using the first sequence
     Print the nodes of T1 using inorder procedure
     Count and print the number of leaf nodes in T1
+    Prompt user to input another sequence of integers
     Build T2 (second binary search tree) using the second sequence
     Swap all child nodes of T2
     Print the nodes of T2 using the postorder procedure
@@ -37,6 +38,9 @@ Purpose:
    various ways in order to manipulate the tree data structure.
 */
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
 class Driver {
 
   
@@ -45,14 +49,11 @@ class Driver {
          * The main method.
         */
         
-        // Initialize variables
-        int[] sequence1 = new int[] {60, 20, 100, 35, 15, 200, 75, 150, 6, 17, 40};
-        int[] sequence2 = new int[] {60, 100, 20, 15, 35, 75, 200, 6, 17, 40, 150};
-    
         // Build T1
         Tree t1 = new Tree();
+        ArrayList<Integer> sequence1 = getSequence();
         System.out.print("Building tree T1 with sequence: ");
-        for (int i=0; i<sequence1.length; i++) {System.out.print(sequence1[i] + " ");}
+        for (int i=0; i<sequence1.size(); i++) {System.out.print(sequence1.get(i) + " ");}
         System.out.println("\n");
         build(t1, sequence1);
         
@@ -68,8 +69,9 @@ class Driver {
         
         // Build T2
         Tree t2 = new Tree();
+        ArrayList<Integer> sequence2 = getSequence();
         System.out.print("Building tree T2 with sequence: ");
-        for (int i=0; i<sequence1.length; i++) {System.out.print(sequence1[i] + " ");}
+        for (int i=0; i<sequence1.size(); i++) {System.out.print(sequence1.get(i) + " ");}
         System.out.println("\n");
         build(t2, sequence1);
         
@@ -92,7 +94,7 @@ class Driver {
         // Build T3
         Tree t3 = new Tree();
         System.out.print("Building tree T3 with sequence: ");
-        for (int i=0; i<sequence2.length; i++) {System.out.print(sequence2[i] + " ");}
+        for (int i=0; i<sequence2.size(); i++) {System.out.print(sequence2.get(i) + " ");}
         System.out.println("\n");
         build(t3, sequence2);
         
@@ -118,13 +120,13 @@ class Driver {
     }
     
     
-    public static void build(Tree t, int[] sequence) {
+    public static void build(Tree t, ArrayList<Integer> sequence) {
         /*
          * Builds a Binary Search Tree from given sequence of integers
         */
     
-        for (int i=0; i<sequence.length; i++) {
-            int number = sequence[i];
+        for (int i=0; i<sequence.size(); i++) {
+            int number = sequence.get(i);
             TreeNode newNode = new TreeNode(number);
             if (t.root == null) {t.root = newNode;}
             t.insert(t.root, newNode);
@@ -162,6 +164,24 @@ class Driver {
     }
     
     
+    public static ArrayList<Integer> getSequence() {
+        /*
+         * Retreives a sequence of integers from user via the
+         * keyboard
+        */
+      
+        ArrayList<Integer> sequence = new ArrayList<Integer>();
+        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a sequence of integers. Enter 'q' to stop");
+        
+        while (input.hasNextInt()) {
+            sequence.add(input.nextInt());
+        }
+      
+        return sequence;  
+      
+    }
     public static void search(Tree t, int n) {
         /*
          * Searches the binary search tree and prints out
