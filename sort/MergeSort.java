@@ -3,28 +3,23 @@ public class MergeSort {
   
     public Node sort(Node q) {
         
-        if (q == null) {return null;}
-        if (q.next == null) {return null;}
+        if (q == null || q.next == null) {return q;}
         
         Node center = getCenter(q);
-        Node l = q;
-        Node r = center.next;
+        Node half = center.next;
         center.next = null;
-        
-        Node left = sort(l);
-        Node right = sort(r);
-        center.next = r;
           
-        return merge(left, right);
+        return merge(sort(q), sort(half));
     }
     
     
     public Node getCenter(Node q) {
         
-        Node slow = q;
-        Node fast = q.next;
+        Node slow;
+        Node fast;
+        slow = fast = q;
         
-        while (fast != null && fast.next != null) {
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -32,37 +27,27 @@ public class MergeSort {
         return slow;
     }
     
-    
     public Node merge(Node left, Node right) {
         
-        Node temp = new Node();
-        Node head = new Node();
-        temp = temp.next;
-        head = head.next;
+        Node temp;
+        Node head;
+        head = new Node();
+        temp = head;
         
         while (left != null && right != null) {
-          if (left.data < right.data) {
-              if (temp == null) {
-                  temp = left;
-                  head = left;
-              } else {
-                  temp.next = left;
-                  temp = temp.next;
-              }
-              left = left.next;
-              
-          } else {
-              if (temp == null) {
-                  temp = right;
-                  head = right;
-              } else {
-                  temp.next = right;
-                  temp = temp.next;
-              }
-              right = right.next;
-          }
+            if (left.data <= right.data) {
+                temp.next = left;
+                left = left.next;
+            } else {
+                temp.next = right;
+                right = right.next;
+            }
+            temp = temp.next;
         }
         
-        return head;
+        if (left == null) {temp.next = right;}
+        else {temp.next = left;}
+        
+        return head.next;
     }
 }

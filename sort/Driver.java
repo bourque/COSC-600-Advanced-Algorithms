@@ -32,8 +32,9 @@ public class Driver {
         // Make linked list containing the random numbers
         LinkedList list = new LinkedList();
         //Node insertNode = list.insert(q, head, "random_numbers.txt");
-        Node quickNode = list.insert(q, head, "random_numbers.txt");
-        //Node mergeNode = list.insert(q, head, "random_numbers.txt");
+        //Node quickNode = list.insert(q, head, "random_numbers.txt");
+        Node mergeNode = list.insert(q, head, "random_numbers.txt");
+        //Node heapNode = list.insert(q, head, "random_numbers.txt");
         
         // Perform insertion sort and write result to "insertion.dat"
         //InsertionSort inserstionSort = new InsertionSort();
@@ -45,23 +46,31 @@ public class Driver {
         //writeToFile(sortedInsertion, "insertion.dat");
         
         // Perform quick sort and write result to "quick.dat"
-        QuickSort quickSort = new QuickSort();
-        final long quickSortBegin = System.currentTimeMillis();
-        Node sortedQuick = quickSort.sort(quickNode.next);
-        final long quickSortEnd = System.currentTimeMillis();
-        final long quickSortTotal = quickSortEnd - quickSortBegin;
-        System.out.println("Quick sort took: " + quickSortTotal);
-        writeToFile(sortedQuick, "quick.dat");
+        //QuickSort quickSort = new QuickSort();
+        //final long quickSortBegin = System.currentTimeMillis();
+        //Node sortedQuick = quickSort.sort(quickNode.next);
+        //final long quickSortEnd = System.currentTimeMillis();
+        //final long quickSortTotal = quickSortEnd - quickSortBegin;
+        //System.out.println("Quick sort took: " + quickSortTotal);
+        //writeToFile(sortedQuick, "quick.dat");
         
-        // Perform merge sort and write result tp "merge.dat"
-        //final long mergeSortBegin = System.currentTimeMillis();
-        //Node sortedMerge = sort.mergeSort(mergeNode.next);       
-        //final long mergeSortEnd = System.currentTimeMillis();
-        //final long mergeSortTotal = mergeSortEnd - mergeSortBegin;
-        //System.out.println("Merge sort took: " + mergeSortTotal);
-        //writeToFile(sortedMerge, "merge.dat");
+        // Perform merge sort and write result to "merge.dat"
+        MergeSort mergeSort = new MergeSort();
+        final long mergeSortBegin = System.currentTimeMillis();
+        Node sortedMerge = mergeSort.sort(mergeNode.next);       
+        final long mergeSortEnd = System.currentTimeMillis();
+        final long mergeSortTotal = mergeSortEnd - mergeSortBegin;
+        System.out.println("Merge sort took: " + mergeSortTotal);
+        writeToFile(sortedMerge, "merge.dat");
         
-        //heapSort();
+        // Perform heap sort and write result to "heap.dat"
+        //HeapSort heapSort = new HeapSort();
+        //final long heapSortBegin = System.currentTimeMillis();
+        //Node sortedHeap = heapSort.sort(heapNode.next);       
+        //final long heapSortEnd = System.currentTimeMillis();
+        //final long heapSortTotal = heapSortEnd - heapSortBegin;
+        //System.out.println("Heap sort took: " + heapSortTotal);
+        //writeToFile(sortedHeap, "heap.dat");
     }
     
     
