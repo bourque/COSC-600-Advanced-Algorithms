@@ -27,6 +27,7 @@ public class MergeSort {
         return slow;
     }
     
+    
     public Node merge(Node left, Node right) {
         
         Node temp;
