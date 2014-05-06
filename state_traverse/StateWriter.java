@@ -48,7 +48,7 @@ public class StateWriter {
                 System.out.println("Oklahoma");
                 break;
             case 14: 
-                System.out.println("Jansas");
+                System.out.println("Kansas");
                 break;
             case 15: 
                 System.out.println("Nebraska");
@@ -151,6 +151,9 @@ public class StateWriter {
                 break;
             case 48: 
                 System.out.println("Florida");
+                break;
+            default:
+                System.out.println("State not found");
                 break;
         }
     }
