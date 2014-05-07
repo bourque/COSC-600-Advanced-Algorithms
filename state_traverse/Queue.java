@@ -16,7 +16,7 @@ public class Queue {
       
         Node oldLast = last;
         last = new Node();
-        last.data = item;
+        last.data = (Integer) item;
         last.next = null;
         
         if (isEmpty()) first = last;

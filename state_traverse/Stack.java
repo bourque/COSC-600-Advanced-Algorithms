@@ -3,16 +3,16 @@ public class Stack {
     private Node top;
     
     
-    public void push(Object item) {
+    public void push(Node item) {
       
-        top = new Node(item, top);
+        top = new Node(item.data, true, top);
     }
     
     
-    public Object pop() {
+    public Node pop() {
       
         Node oldTop = top;
-        Object item = peek();
+        Node item = peek();
         top = top.next;
         oldTop.next = null;
         
@@ -20,11 +20,11 @@ public class Stack {
     }
     
     
-    public Object peek() {
+    public Node peek() {
       
         if (isEmpty()) throw new NullPointerException();
         
-        return top.data;
+        return top;
     }
     
     
