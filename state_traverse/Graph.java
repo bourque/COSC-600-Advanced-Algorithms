@@ -49,21 +49,35 @@ public class Graph {
          * Traverses the graph via Breadth First Traversal
         */
         
-        Queue queue = new Queue();
-        queue.enq(p.data);
-        
+        // Print column headers
+        System.out.println("State\tLevel\tColor");
+      
+        // Write first state
         StateWriter sw = new StateWriter();
         sw.writeStateName(p.data);
         p.visited = true;
         p.level = 0;
+        System.out.print(p.level + "\n");
         
+        // Put first state into the queue
+        Queue queue = new Queue();
+        queue.enq(p.data);
+        
+        // Visit adjacent states using Breadth First Traversal
         while (!queue.isEmpty()) {
+          
+            // Get first node from queue
             int j = (Integer) queue.dnq();
             Node n = this.map[j-1];
             int l = n.level;
+            
             while (n.next != null) {
+                
+                // Get adjacent node
                 int adj = n.next.data;
                 Node m = this.map[adj -1];
+                
+                // Visit the adjacent node if necessary
                 if (m.visited == false) {
                     m.level = l + 1;
                     queue.enq(m.data);
