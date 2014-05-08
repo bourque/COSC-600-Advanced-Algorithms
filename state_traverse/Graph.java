@@ -48,18 +48,22 @@ public class Graph {
          * Traverses the graph via Breadth First Traversal
         */
         
-        Queue queue = new Queue();
-        queue.enq(p.data);
-        
+        // Write first state visited
         StateWriter sw = new StateWriter();
         sw.writeStateName(p.data);
         p.visited = true;
         
+        // Put first state into queue
+        Queue queue = new Queue();
+        queue.enq(p.data);
+        
+        // Visit adjacent states
         while (!queue.isEmpty()) {
             int j = (Integer) queue.dnq();
             Node n = this.map[j-1];
+            n = n.next;
             while (n.next != null) {
-                int adj = n.next.data;
+                int adj = n.data;
                 Node m = this.map[adj -1];
                 if (m.visited == false) {
                     queue.enq(m.data);
