@@ -35,6 +35,7 @@ public class Graph {
         for (int i=0; i<count; i++) {
             if (p.next != null) {
                 int adj = p.next.data;
+                //System.out.println(adj);
                 Node q = this.map[adj - 1];
                 if (q.visited == false) {DFS(q);}
                 p = p.next;
@@ -48,26 +49,26 @@ public class Graph {
          * Traverses the graph via Breadth First Traversal
         */
         
-        // Write first state visited
-        StateWriter sw = new StateWriter();
-        sw.writeStateName(p.data);
-        p.visited = true;
-        
-        // Put first state into queue
         Queue queue = new Queue();
         queue.enq(p.data);
         
-        // Visit adjacent states
+        StateWriter sw = new StateWriter();
+        sw.writeStateName(p.data);
+        p.visited = true;
+        p.level = 0;
+        
         while (!queue.isEmpty()) {
             int j = (Integer) queue.dnq();
             Node n = this.map[j-1];
-            n = n.next;
+            int l = n.level;
             while (n.next != null) {
-                int adj = n.data;
+                int adj = n.next.data;
                 Node m = this.map[adj -1];
                 if (m.visited == false) {
+                    m.level = l + 1;
                     queue.enq(m.data);
                     sw.writeStateName(m.data);
+                    System.out.println(m.level);
                     m.visited = true;
                 }
                 n = n.next;

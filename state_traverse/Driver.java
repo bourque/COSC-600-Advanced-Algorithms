@@ -63,7 +63,7 @@ public class Driver {
         graphForDFS.DFS(mapForDFS[0]);
         
         Graph graphForBFS = new Graph(mapForBFS);
-        System.out.println("\nTraversing map using Breadth First Traversal:\n");
+        System.out.println("\n\nTraversing map using Breadth First Traversal:\n");
         graphForBFS.BFS(mapForBFS[0]);
     }
     
