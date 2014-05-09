@@ -15,7 +15,7 @@ public class Graph {
         /*
          * Traverses the graph via Depth First Traversal
         */
-        
+      
         // Write the current state name
         StateWriter sw = new StateWriter();
         sw.writeStateName(p.data);
@@ -30,12 +30,11 @@ public class Graph {
             count++;
             tmp = tmp.next;
         }
-
+              
         // Traverse adjacent vertices
         for (int i=0; i<count; i++) {
             if (p.next != null) {
                 int adj = p.next.data;
-                //System.out.println(adj);
                 Node q = this.map[adj - 1];
                 if (q.visited == false) {DFS(q);}
                 p = p.next;
@@ -50,7 +49,7 @@ public class Graph {
         */
         
         // Print column headers
-        System.out.println("State\tLevel\tColor");
+        System.out.println("State\tLevel");
       
         // Write first state
         StateWriter sw = new StateWriter();
@@ -80,6 +79,7 @@ public class Graph {
                 // Visit the adjacent node if necessary
                 if (m.visited == false) {
                     m.level = l + 1;
+                    m.color = 0;
                     queue.enq(m.data);
                     sw.writeStateName(m.data);
                     System.out.println(m.level);

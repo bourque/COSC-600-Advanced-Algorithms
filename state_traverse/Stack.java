@@ -3,9 +3,9 @@ public class Stack {
     private Node top;
     
     
-    public void push(Node item) {
+    public void push(Object item) {
       
-        top = new Node(item.data, true, top);
+        top = new Node((Integer) item);
     }
     
     
