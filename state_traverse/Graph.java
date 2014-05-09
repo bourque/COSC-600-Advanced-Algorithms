@@ -79,7 +79,6 @@ public class Graph {
                 // Visit the adjacent node if necessary
                 if (m.visited == false) {
                     m.level = l + 1;
-                    m.color = 0;
                     queue.enq(m.data);
                     sw.writeStateName(m.data);
                     System.out.println(m.level);

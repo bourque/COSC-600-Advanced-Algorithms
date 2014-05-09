@@ -4,7 +4,6 @@ public class Node {
     boolean visited;
     Node next;
     Integer level;
-    Integer color;
     
     public Node() {
       
@@ -12,16 +11,6 @@ public class Node {
         visited = false;
         next = null;
         level = null;
-        color = null;
-    }
-    
-    public Node(Integer c) {
-      
-        data = null;
-        visited = false;
-        next = null;
-        level = null;
-        color = c;
     }
     
     public Node(Integer x, boolean v, Node node) {
@@ -38,14 +27,5 @@ public class Node {
         visited = v;
         next = node;
         level = l;
-    }
-   
-   public Node(Integer x, boolean v, Node node, Integer l, Integer c) {
-      
-        data = x;
-        visited = v;
-        next = node;
-        level = l;
-        color = c;
     }
 }
